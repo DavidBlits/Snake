@@ -12,6 +12,7 @@ def main(*args):
     apple_skin = pygame.Surface((10, 10))
     apple_skin.fill((255, 0, 0))
     my_direction = None
+    tick=10
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -53,13 +54,14 @@ def main(*args):
         if snake[-1] == apple:
             apple=(random.randint(0, 63)*10, random.randint(0, 47)*10)
             snake.insert(0, snake[0])
+            tick+=1
             
         screen.fill((0, 0, 0))
         for pos in snake:
             screen.blit(snake_skin, pos)
         screen.blit(apple_skin, apple)
         pygame.display.update()
-        clock.tick(20)
+        clock.tick(tick)
 if __name__ == '__main__':
     main()
     
